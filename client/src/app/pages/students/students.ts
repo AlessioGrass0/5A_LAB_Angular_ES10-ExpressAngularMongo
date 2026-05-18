@@ -18,6 +18,7 @@ export class Students implements OnInit{
   errorMessage:String = "";
   successMessage:String = "";
   students: Student[] = [];
+  showStats: boolean=false;
 
 
   ngOnInit() {
@@ -41,5 +42,14 @@ export class Students implements OnInit{
         this.cdr.detectChanges();
       }
     });
+  }
+
+  caricaStatistiche() {
+
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(["/login"]);
   }
 }
