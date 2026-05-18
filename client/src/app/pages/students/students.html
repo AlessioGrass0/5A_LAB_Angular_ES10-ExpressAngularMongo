@@ -19,7 +19,21 @@
     @if (errorMessage) {
     <div class="alert-error">⚠️ {{ errorMessage }}</div>
     }
-
+    &lt;!&ndash; Barra azioni &ndash;&gt;
+    <div class="toolbar">
+      <div class="search-group">
+        <input
+          type="text"
+          [(ngModel)]="filtroCognome"
+          placeholder="Cerca per cognome..."
+          class="search-input"
+          (keyup.enter)="cerca()"
+        />
+        <button class="btn-secondary" (click)="cerca()">🔍 Cerca</button>
+        <button class="btn-secondary" (click)="loadAll()">↺ Tutti</button>
+      </div>
+      <!-- <button class="btn-primary" (click)="nuovoStudente()">➕ Nuovo studente</button> -->
+    </div>
     <!--&lt;!&ndash; Statistiche aggregate &ndash;&gt;
     @if (showStats) {
     <div class="stats-card">

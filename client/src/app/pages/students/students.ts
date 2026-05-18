@@ -5,6 +5,7 @@ import {Auth} from '../../services/auth';
 import {Httpcall} from '../../services/httpcall';
 import {Router} from '@angular/router';
 import { Student } from '../../models/student.model';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'students',
@@ -19,6 +20,7 @@ export class Students implements OnInit{
   successMessage:String = "";
   students: Student[] = [];
   showStats: boolean=false;
+  filtroCognome:string="";
 
 
   ngOnInit() {
@@ -45,6 +47,9 @@ export class Students implements OnInit{
   }
 
   caricaStatistiche() {
+
+  }
+  cerca(){
 
   }
 
