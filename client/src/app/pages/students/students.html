@@ -19,23 +19,18 @@
     @if (errorMessage) {
     <div class="alert-error">⚠️ {{ errorMessage }}</div>
     }
-    &lt;!&ndash; Barra azioni &ndash;&gt;
+    <!-- Barra azioni -->
     <div class="toolbar">
       <div class="search-group">
-        <input
-          type="text"
-          [(ngModel)]="filtroCognome"
-          placeholder="Cerca per cognome..."
-          class="search-input"
-          (keyup.enter)="cerca()"
-        />
+        <input type="text" [(ngModel)]="filtroCognome" placeholder="Cerca per cognome..." class="search-input"
+          (keyup.enter)="cerca()" />
         <button class="btn-secondary" (click)="cerca()">🔍 Cerca</button>
         <button class="btn-secondary" (click)="loadAll()">↺ Tutti</button>
       </div>
-      <!-- <button class="btn-primary" (click)="nuovoStudente()">➕ Nuovo studente</button> -->
+      <button class="btn-primary" (click)="nuovoStudente()">➕ Nuovo studente</button>
     </div>
-    <!--&lt;!&ndash; Statistiche aggregate &ndash;&gt;
-    @if (showStats) {
+    <!-- Statistiche aggregate -->
+    <!-- @if (showStats) {
     <div class="stats-card">
       <h3>📊 Studenti per città (aggregate)</h3>
       <div class="stats-grid">
@@ -47,23 +42,9 @@
     }
     </div>
   </div>
-    }
+    } -->
 
-    &lt;!&ndash; Barra azioni &ndash;&gt;
-    <div class="toolbar">
-      <div class="search-group">
-        <input
-          type="text"
-          [(ngModel)]="filtroCognome"
-          placeholder="Cerca per cognome..."
-          class="search-input"
-          (keyup.enter)="cerca()"
-        />
-        <button class="btn-secondary" (click)="cerca()">🔍 Cerca</button>
-        <button class="btn-secondary" (click)="loadAll()">↺ Tutti</button>
-      </div>
-      <button class="btn-primary" (click)="nuovoStudente()">➕ Nuovo studente</button>
-    </div>
+    
 
     &lt;!&ndash; Form inserimento / modifica &ndash;&gt;
     @if (showForm) {
@@ -118,43 +99,42 @@
     } @else {
     <div class="students-grid">
       @for (s of students; track s._id) {
-    <div class="student-card">
-      <div class="card-header">
-        <span class="student-name">{{ s.nome }} {{ s.cognome }}</span>
-        <span class="student-age">{{ s.eta }} anni</span>
-      </div>
-      <div class="card-body">
-        @if (s.indirizzo) {
-        <p class="card-info">
-          📍 {{ s.indirizzo.via }}, {{ s.indirizzo.citta }}
-        @if (s.indirizzo.CAP) {
-        <span>({{ s.indirizzo.CAP }})</span>
-        }
-        </p>
-        }
-        @if (s.interessi && s.interessi.length > 0) {
-        <div class="interessi-list">
-          @for (interesse of s.interessi; track interesse) {
+      <div class="student-card">
+        <div class="card-header">
+          <span class="student-name">{{ s.nome }} {{ s.cognome }}</span>
+          <span class="student-age">{{ s.eta }} anni</span>
+        </div>
+        <div class="card-body">
+          @if (s.indirizzo) {
+          <p class="card-info">
+            📍 {{ s.indirizzo.via }}, {{ s.indirizzo.citta }}
+            @if (s.indirizzo.CAP) {
+            <span>({{ s.indirizzo.CAP }})</span>
+            }
+          </p>
+          }
+          @if (s.interessi && s.interessi.length > 0) {
+          <div class="interessi-list">
+            @for (interesse of s.interessi; track interesse) {
             <span class="badge-interesse">{{ interesse }}</span>
-        }
-        </div>
-        }
-        @if (s.corsi && s.corsi.length > 0) {
-        <div class="corsi-list">
-          @for (corso of s.corsi; track corso.nome) {
+            }
+          </div>
+          }
+          @if (s.corsi && s.corsi.length > 0) {
+          <div class="corsi-list">
+            @for (corso of s.corsi; track corso.nome) {
             <span class="badge-corso">{{ corso.nome }} <strong>{{ corso.voto }}</strong></span>
-        }
+            }
+          </div>
+          }
         </div>
-        }
-      </div>
-      <!--<div class="card-footer">
+        <!--<div class="card-footer">
         <button class="btn-edit" (click)="modificaStudente(s)">✏️ Modifica</button>
         <button class="btn-delete" (click)="elimina(s)">🗑️ Elimina</button>
       </div>-->
-    </div>
-    }
+      </div>
+      }
     </div>
     }
   </main>
 </div>
-

@@ -7,6 +7,8 @@ const HTTPS = require("https");
 const cors = require("cors");
 const tokenAdministration = require("./tokenAdministration");
 const mongoFunctions = require("./mongoFunctions");
+const { Db } = require("mongodb");
+const { emitWarning } = require("process");
 
 // ---- Costanti di configurazione ----
 const PORT = 8888;
@@ -42,7 +44,7 @@ const app = express();
 
 app.listen(PORT,function (){
     console.log("=================================================");
-    console.log(`  Server HTTP avviato su https://127.0.0.1:${PORT}`);
+    console.log(`  Server HTTP avviato su http://127.0.0.1:${PORT}`);
     console.log("=================================================");
 });
 
@@ -157,7 +159,12 @@ app.post("/api/students/cerca", checkToken, (req, res) => {
 //  Body richiesto: { "cognome": "Rossi" }
 // ----------------------------------------------------------
 app.post("/api/students/cercaPerCognome", checkToken, (req, res) => {
-    
+    mongoFunctions.find(DB,C_STUDENTS,req.body,(err,data)=>{
+        if(err.codeErr == -1)
+            res.send({data:data, newToken:req.newToken});
+        else
+            sendError(res,err.codeErr,err.message);
+    });
 });
 
 // ----------------------------------------------------------
