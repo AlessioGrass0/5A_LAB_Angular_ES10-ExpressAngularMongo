@@ -7,7 +7,7 @@ import { Auth } from './auth';
   providedIn: 'root',
 })
 export class Httpcall {
-  private readonly apiUrl = 'https://127.0.0.1:8888';
+  private readonly apiUrl = 'http://127.0.0.1:8888';
 
   constructor(private http: HttpClient, private auth: Auth) {}
 
