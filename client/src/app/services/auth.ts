@@ -8,7 +8,7 @@ import { LoginRequest, LoginResponse } from '../models/student.model';
 })
 export class Auth {
   // Il server usa HTTPS sulla porta 8888
-  private readonly apiUrl = 'https://127.0.0.1:8888/api';
+  private readonly apiUrl = 'http://127.0.0.1:8888/api';
   private readonly TOKEN_KEY = 'jwt_token';
 
   constructor(private http: HttpClient) {}

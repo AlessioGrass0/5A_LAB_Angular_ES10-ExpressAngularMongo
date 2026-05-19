@@ -26,12 +26,23 @@ const credentials = { key: privateKey, cert: certificate };
 // Creazione dell'app Express che viene passata al server HTTPS.
 // Express gestisce il routing, HTTPS gestisce la cifratura.
 const app = express();
-const httpsServer = HTTPS.createServer(credentials, app);
+
+// Creazione server HTTPS
+// const httpsServer = HTTPS.createServer(credentials, app);
 
 // Avviamo il server: ascoltiamo solo sull'interfaccia locale (127.0.0.1)
-httpsServer.listen(PORT, "127.0.0.1", () => {
+/*httpsServer.listen(PORT, "127.0.0.1", () => {
     console.log("=================================================");
     console.log(`  Server HTTPS avviato su https://127.0.0.1:${PORT}`);
+    console.log("=================================================");
+});*/
+
+
+// Creazione server HTTP
+
+app.listen(PORT,function (){
+    console.log("=================================================");
+    console.log(`  Server HTTP avviato su https://127.0.0.1:${PORT}`);
     console.log("=================================================");
 });
 
